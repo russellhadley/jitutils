@@ -6,7 +6,7 @@
     },
 
     "dependencies": {
-        "Microsoft.DotNet.Cli.Utils": "1.0.0-dev-*",
+        "Microsoft.DotNet.Cli.Utils": "1.0.0-rc2-002678",
         "System.CommandLine": "0.1.0-*"
     },
 

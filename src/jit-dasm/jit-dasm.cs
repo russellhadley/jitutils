@@ -157,6 +157,20 @@ namespace ManagedCodeGen
                 }
             }
 
+            if (_crossgenExe != null)
+            {
+                if (!File.Exists(_crossgenExe))
+                {
+                    _syntaxResult.ReportError("Can't find --crossgen tool.");
+                }
+                else
+                {
+                    // Set to full path for command resolution logic.
+                    string fullCrossgenPath = Path.GetFullPath(_crossgenExe);
+                    _crossgenExe = fullCrossgenPath;
+                }
+            }
+
             if (_fileName != null)
             {
                 if (!File.Exists(_fileName))
@@ -593,6 +607,15 @@ namespace ManagedCodeGen
                             }
                         }
                         
+                        foreach(var context in PerfTrace.GetEvents())
+                        {
+                            var events = new[] { context.Root };
+                            foreach(var e in events)
+                            {
+                                Console.WriteLine($"Type: {e.Type}, Instance: {e.Instance}, StartUtc: {e.StartUtc}, Duration: {e.Duration}");
+                            }
+                        }
+                                //PerfTraceOutput.Print(Reporter.Output, PerfTrace.GetEvents());
                         if (result.ExitCode != 0)
                         {
                             Console.Error.WriteLine("Error running {0} on {1}", _executablePath, fullPathAssembly);
