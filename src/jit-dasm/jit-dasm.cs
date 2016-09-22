@@ -615,7 +615,7 @@ namespace ManagedCodeGen
                                 Console.WriteLine($"Type: {e.Type}, Instance: {e.Instance}, StartUtc: {e.StartUtc}, Duration: {e.Duration}");
                             }
                         }
-                                //PerfTraceOutput.Print(Reporter.Output, PerfTrace.GetEvents());
+                        PerfTraceOutput.Print(Reporter.Output, PerfTrace.GetEvents());
                         if (result.ExitCode != 0)
                         {
                             Console.Error.WriteLine("Error running {0} on {1}", _executablePath, fullPathAssembly);
